@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        body {
+            background-color: #1e1e1c;
+            {#background-color: #3b3b3b;#}
+            color: white;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        h1 {
+            text-align: center;
+        }
+        img {
+            padding-right: 50px;
+            float: left;
+        }
+        table {
+            margin: auto;
+        }
+        td {
+            width: 300px;
+        }
+        .heading {
+            color: white;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("../media/sample/header.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            {#display: flex;#}
+            {#justify-content: center;#}
+        }
+        .header {
+            margin: 0;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cinzel', sans-serif;
+            font-size: xxx-large;
+            font-weight:800;
+        }
+        .main {
+            {#background-color: aqua;#}
+            margin: auto;
+            margin-top: 40px;
+            width: 40%;
+            text-align: justify;
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            height: 250px;
+        }
+    </style>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    let Image_id = document.getElementById('uploaded_img');
+                    Image_id.src = e.target.result
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function func1() {
+            let Image_Id = document.getElementById('sample1');
+            Image_Id.src = "../media/sample/camera.jpg";
+        }
+        function func2() {
+            let Image_Id = document.getElementById('sample2');
+            Image_Id.src = "../media/sample/camera.jpg";
+        }
+        function func3() {
+            let Image_Id = document.getElementById('sample3');
+            Image_Id.src = "../media/sample/camera.jpg";
+        }
+        function func4() {
+            let Image_Id = document.getElementById('sample4');
+            Image_Id.src = "../media/sample/camera.jpg";
+        }
+    </script>
+</head>
+<body>
+    <div class="heading">
+        <p class="header">GrayScale <br> Image Colorization</p>
+    </div>
+    <div class="main">
+        <img id="uploaded_img" src="../media/sample/grayscale.jpeg" width="250px" height="250px">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos eveniet magnam tempora! A amet aperiam atque consequatur, dolore expedita inventore nam odit officiis quaerat quia saepe veritatis voluptate. Eaque!</p>
+        <br>
+        <form action="upload" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="grayscale_image" onchange="readURL(this);" required/>
+                <br><br>
+            <input type="submit"/>
+        </form>
+    </div>
+    <br><br><br>
+    <div style="margin-bottom: 40px">
+        <h1>or choose from the sample below</h1><br><br><br>
+        <table>
+            <tr>
+                <td><input type="image" id="sample1" src = "../media/sample/grayscale.jpeg" height="250px" width="250px" onclick="func1();"></td>
+                <td><input type="image" id="sample2" src = "../media/sample/grayscale.jpeg" height="250px" width="250px" onclick="func2();"></td>
+                <td><input type="image" id="sample3" src = "../media/sample/grayscale.jpeg" height="250px" width="250px" onclick="func3();"></td>
+                <td><input type="image" id="sample4" src = "../media/sample/grayscale.jpeg" height="250px" width="250px" onclick="func4();"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
